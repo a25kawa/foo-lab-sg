@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foo Lab — Cardiac Genomics & Precision Medicine | NUS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & tokens ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --slate-950: #020617;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50:  #f8fafc;
+      --coral:     #f97316;
+      --coral-dark:#c2410c;
+      --coral-mid: #ea580c;
+      --coral-pale:#fff7ed;
+      --white:     #ffffff;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans:  'Inter', system-ui, sans-serif;
+      --max-w: 1180px;
+      --radius: 6px;
+      --transition: 0.22s ease;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--slate-800);
+      background: var(--white);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Utility ─────────────────────────────────────────── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-sans); font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral);
+    }
+    .section-label::before {
+      content: ''; display: block; width: 28px; height: 2px; background: var(--coral);
+    }
+    .section-title {
+      font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 600; color: var(--slate-900); line-height: 1.2;
+      margin-top: 0.75rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.7rem 1.5rem; border-radius: var(--radius);
+      font-size: 0.875rem; font-weight: 600; cursor: pointer;
+      transition: all var(--transition);
+    }
+    .btn-coral { background: var(--coral); color: var(--white); }
+    .btn-coral:hover { background: var(--coral-mid); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(249,115,22,0.35); }
+    .btn-outline { border: 1.5px solid rgba(255,255,255,0.5); color: var(--white); }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.8); }
+    .btn-slate { border: 1.5px solid var(--slate-300); color: var(--slate-700); }
+    .btn-slate:hover { border-color: var(--coral); color: var(--coral); }
+
+    /* ── Reveal animation ────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Navigation ──────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15, 23, 42, 0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--coral); display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-serif); font-size: 1rem; font-weight: 700; color: white;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600;
+      color: var(--white); letter-spacing: 0.02em;
+    }
+    .nav-logo-sub {
+      font-size: 0.65rem; color: var(--slate-400); font-weight: 400;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 0.25rem; list-style: none;
+    }
+    .nav-links a {
+      padding: 0.4rem 0.85rem; border-radius: 4px;
+      font-size: 0.82rem; font-weight: 500; color: var(--slate-300);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links .active > a { color: var(--coral); }
+    .nav-cta {
+      background: var(--coral) !important; color: white !important;
+      padding: 0.4rem 1rem !important; border-radius: 4px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--coral-mid) !important; color: white !important; }
+    /* Hamburger */
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+    }
+    .nav-hamburger span {
+      width: 22px; height: 2px; background: var(--slate-300); border-radius: 2px;
+      transition: all 0.25s;
+    }
+    /* Mobile menu */
+    .nav-mobile {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: var(--slate-950); border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 1rem 2rem 1.5rem; z-index: 99;
+    }
+    .nav-mobile.open { display: block; }
+    .nav-mobile ul { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
+    .nav-mobile a {
+      display: block; padding: 0.6rem 0; font-size: 0.9rem; font-weight: 500;
+      color: var(--slate-300); border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color var(--transition);
+    }
+    .nav-mobile a:hover { color: var(--coral); }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      background: var(--slate-900); overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1800&q=80');
+      background-size: cover; background-position: center;
+      opacity: 0.16;
+    }
+    .hero-bg-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(120deg, rgba(15,23,42,0.97) 42%, rgba(15,23,42,0.65) 100%);
+    }
+    .hero-accent {
+      position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--coral) 30%, var(--coral-mid) 70%, transparent);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+      padding-top: 7rem;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: rgba(249,115,22,0.12); border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 999px; padding: 0.35rem 0.9rem;
+      font-size: 0.75rem; font-weight: 600; color: #fb923c;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem;
+      animation: fadeDown 0.7s ease both;
+    }
+    .hero-eyebrow span { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 700; color: var(--white);
+      line-height: 1.1; max-width: 720px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero-title em { color: var(--coral); font-style: normal; }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--slate-300);
+      max-width: 560px; margin-bottom: 2.5rem; line-height: 1.7;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .hero-stats {
+      display: flex; gap: 3rem; margin-top: 5rem;
+      padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+    .hero-stat-num {
+      font-family: var(--font-serif); font-size: 2rem; font-weight: 700;
+      color: var(--white); line-height: 1;
+    }
+    .hero-stat-num span { color: var(--coral); }
+    .hero-stat-label {
+      font-size: 0.78rem; color: var(--slate-400); margin-top: 0.3rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .hero-image-card {
+      position: absolute; right: 5%; bottom: 12%;
+      width: min(340px, 30vw);
+      border-radius: 8px; overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.06);
+      animation: fadeLeft 1s 0.5s ease both;
+    }
+    .hero-image-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .hero-image-caption {
+      background: rgba(15,23,42,0.92); padding: 0.75rem 1rem;
+      font-size: 0.75rem; color: var(--slate-400);
+    }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-12px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeLeft { from { opacity:0; transform:translateX(32px); } to { opacity:1; transform:translateX(0); } }
+
+    /* ── Affiliations strip ──────────────────────────────── */
+    .affiliations {
+      background: var(--slate-100); border-bottom: 1px solid var(--slate-200);
+      padding: 1.25rem 0;
+    }
+    .affiliations-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+      display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .aff-label {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--slate-500); font-weight: 600; white-space: nowrap;
+    }
+    .aff-divider { width: 1px; height: 20px; background: var(--slate-300); }
+    .aff-item {
+      font-size: 0.82rem; font-weight: 600; color: var(--slate-700);
+      white-space: nowrap;
+    }
+
+    /* ── About ───────────────────────────────────────────── */
+    .about { padding: 6rem 0; background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 0.95rem; color: var(--slate-600); margin-top: 1.25rem; line-height: 1.8;
+    }
+    .about-text p:first-of-type { font-size: 1.05rem; color: var(--slate-700); }
+    .about-actions { margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+    .about-photo-wrap { position: relative; }
+    .about-photo-frame {
+      border-radius: 8px; overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    }
+    .about-photo-frame img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; }
+    .about-photo-accent {
+      position: absolute; top: -16px; right: -16px;
+      width: 100%; height: 100%; border: 2px solid var(--coral);
+      border-radius: 8px; z-index: -1;
+    }
+    .about-quote {
+      margin-top: 2rem; padding: 1.25rem 1.5rem;
+      border-left: 3px solid var(--coral);
+      background: var(--coral-pale);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .about-quote p {
+      font-family: var(--font-serif); font-size: 1rem; font-style: italic;
+      color: var(--slate-700); line-height: 1.6; margin: 0 !important;
+    }
+
+    /* ── Research themes ─────────────────────────────────── */
+    .research { padding: 6rem 0; background: var(--slate-50); }
+    .research-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .research-cards {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    }
+    .research-card {
+      background: var(--white); border-radius: 10px;
+      border: 1px solid var(--slate-200);
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .research-card:hover {
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+    .research-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .research-card-body { padding: 1.75rem; }
+    .research-card-tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--coral); margin-bottom: 0.6rem;
+    }
+    .research-card-title {
+      font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600;
+      color: var(--slate-900); line-height: 1.3; margin-bottom: 0.75rem;
+    }
+    .research-card-desc {
+      font-size: 0.875rem; color: var(--slate-500); line-height: 1.7;
+    }
+    .research-card-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      margin-top: 1.25rem; font-size: 0.82rem; font-weight: 600;
+      color: var(--coral); transition: gap var(--transition);
+    }
+    .research-card-link:hover { gap: 0.6rem; }
+    .research-card-link::after { content: '→'; }
+
+    /* ── Project RESET ───────────────────────────────────── */
+    .reset-section {
+      padding: 6rem 0;
+      background: var(--slate-900);
+      position: relative; overflow: hidden;
+    }
+    .reset-section::before {
+      content: 'RESET'; position: absolute;
+      font-family: var(--font-serif); font-size: 18vw; font-weight: 700;
+      color: rgba(255,255,255,0.02); top: 50%; left: 50%;
+      transform: translate(-50%, -50%); white-space: nowrap; pointer-events: none;
+    }
+    .reset-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .reset-text .section-label { color: #fb923c; }
+    .reset-text .section-label::before { background: #fb923c; }
+    .reset-text .section-title { color: var(--white); }
+    .reset-text p {
+      color: var(--slate-300); font-size: 0.95rem; line-height: 1.8; margin-top: 1.25rem;
+    }
+    .reset-text .btn-coral { margin-top: 2rem; }
+    .reset-features {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+      margin-top: 2rem;
+    }
+    .reset-feat {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius); padding: 1rem 1.2rem;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .reset-feat:hover { background: rgba(249,115,22,0.08); border-color: rgba(249,115,22,0.3); }
+    .reset-feat-num {
+      font-family: var(--font-serif); font-size: 1.6rem; font-weight: 700;
+      color: var(--coral);
+    }
+    .reset-feat-label { font-size: 0.78rem; color: var(--slate-400); margin-top: 0.2rem; }
+    .reset-image {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .reset-image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    /* ── Values ──────────────────────────────────────────── */
+    .values { padding: 5rem 0; background: var(--coral-pale); }
+    .values-grid {
+      display: flex; flex-wrap: wrap; gap: 0.85rem;
+      margin-top: 2.5rem;
+    }
+    .value-pill {
+      display: flex; align-items: center; gap: 0.5rem;
+      background: var(--white); border: 1px solid rgba(249,115,22,0.2);
+      border-radius: 999px; padding: 0.55rem 1.25rem;
+      font-size: 0.875rem; font-weight: 600; color: var(--slate-700);
+      box-shadow: 0 2px 8px rgba(249,115,22,0.08);
+      transition: all var(--transition);
+    }
+    .value-pill:hover { border-color: var(--coral); color: var(--coral-dark); transform: translateY(-1px); }
+    .value-pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+
+    /* ── Team snapshot ───────────────────────────────────── */
+    .team { padding: 6rem 0; background: var(--white); }
+    .team-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .team-card { text-align: center; cursor: pointer; }
+    .team-card-img-wrap {
+      border-radius: 50%; overflow: hidden; width: 100px; height: 100px;
+      margin: 0 auto 0.85rem;
+      border: 3px solid var(--slate-200);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .team-card:hover .team-card-img-wrap { border-color: var(--coral); transform: scale(1.05); }
+    .team-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    .team-card-name { font-size: 0.9rem; font-weight: 600; color: var(--slate-800); }
+    .team-card-role { font-size: 0.78rem; color: var(--slate-500); margin-top: 0.2rem; }
+    .team-more { margin-top: 2.5rem; text-align: center; }
+
+    /* ── News ────────────────────────────────────────────── */
+    .news { padding: 6rem 0; background: var(--slate-50); }
+    .news-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .news-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    }
+    .news-card {
+      background: var(--white); border-radius: 10px; overflow: hidden;
+      border: 1px solid var(--slate-200);
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .news-card:hover {
+      box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+      transform: translateY(-2px);
+    }
+    .news-card-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .news-card-body { padding: 1.5rem; }
+    .news-card-meta {
+      font-size: 0.72rem; color: var(--slate-400); text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 0.6rem;
+    }
+    .news-card-title {
+      font-family: var(--font-serif); font-size: 1.05rem; font-weight: 600;
+      color: var(--slate-900); line-height: 1.35;
+    }
+    .news-card-link {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      margin-top: 1rem; font-size: 0.8rem; font-weight: 600;
+      color: var(--coral); transition: gap var(--transition);
+    }
+    .news-card-link:hover { gap: 0.55rem; }
+    .news-card-link::after { content: '→'; }
+
+    /* ── Publications strip ──────────────────────────────── */
+    .pubs-strip {
+      padding: 4.5rem 0; background: var(--white);
+      border-top: 1px solid var(--slate-200);
+      border-bottom: 1px solid var(--slate-200);
+    }
+    .pubs-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 2rem;
+    }
+    .pubs-text { max-width: 560px; }
+    .pubs-text p {
+      font-size: 0.95rem; color: var(--slate-500); margin-top: 0.75rem; line-height: 1.7;
+    }
+    .pubs-logos {
+      display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;
+    }
+    .pubs-logo-pill {
+      padding: 0.5rem 1.1rem; border-radius: var(--radius);
+      border: 1px solid var(--slate-200); background: var(--slate-50);
+      font-size: 0.8rem; font-weight: 600; color: var(--slate-600);
+      transition: all var(--transition);
+    }
+    .pubs-logo-pill:hover { border-color: var(--coral); color: var(--coral); background: var(--coral-pale); }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      background: var(--slate-950); padding: 4rem 0 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand-desc {
+      font-size: 0.85rem; color: var(--slate-500); line-height: 1.7;
+      margin-top: 1rem; max-width: 280px;
+    }
+    .footer-col-title {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--slate-400); margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li + li { margin-top: 0.55rem; }
+    .footer-links a {
+      font-size: 0.85rem; color: var(--slate-500);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--slate-200); }
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-copy { font-size: 0.78rem; color: var(--slate-600); }
+    .footer-social { display: flex; gap: 1rem; }
+    .footer-social a {
+      width: 34px; height: 34px; border-radius: 6px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; color: var(--slate-400);
+      transition: all var(--transition);
+    }
+    .footer-social a:hover { background: var(--coral); border-color: var(--coral); color: white; }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-image-card { display: none; }
+      .about-grid, .reset-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo-wrap { max-width: 340px; }
+      .research-cards { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(3, 1fr); }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .pubs-inner { flex-direction: column; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .news-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .reset-features { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-mark">F</div>
+      <div>
+        <div class="nav-logo-text">Foo Lab</div>
+        <div class="nav-logo-sub">NUS Medicine · CVRI · A*STAR GIS</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#reset">Project RESET</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank" class="nav-cta">Publications</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#reset">Project RESET</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications →</a></li>
+  </ul>
+</div>
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-gradient"></div>
+  <div class="hero-accent"></div>
+
+  <div class="hero-content container">
+    <div class="hero-eyebrow"><span></span>National University of Singapore</div>
+    <h1 class="hero-title">
+      Impactful Discoveries<br>in <em>Cardiac Genomics</em><br>& Precision Medicine
+    </h1>
+    <p class="hero-desc">
+      We study the molecular mechanisms underlying heart failure — from single-cell transcriptomics and cardiac epigenomics to iPSC models and population-scale prevention — bridging basic science with clinical impact across Southeast Asia.
+    </p>
+    <div class="hero-actions">
+      <a href="#research" class="btn btn-coral">Explore Our Research</a>
+      <a href="#team" class="btn btn-outline">Meet the Team</a>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">2013<span>–</span></div>
+        <div class="hero-stat-label">Lab established in Singapore</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">45<span>+</span></div>
+        <div class="hero-stat-label">Team members</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">Research themes</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">2<span> sites</span></div>
+        <div class="hero-stat-label">NUS CVRI · A*STAR GIS</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-image-card">
+    <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=700&q=80" alt="Cardiac cell microscopy" />
+    <div class="hero-image-caption">Cardiomyocyte imaging · Foo Lab, NUS</div>
+  </div>
+</section>
+
+<!-- ══ AFFILIATIONS ════════════════════════════════════════ -->
+<div class="affiliations">
+  <div class="affiliations-inner">
+    <span class="aff-label">Affiliated with</span>
+    <div class="aff-divider"></div>
+    <span class="aff-item">National University of Singapore</span>
+    <div class="aff-divider"></div>
+    <span class="aff-item">NUS Cardiovascular Research Institute</span>
+    <div class="aff-divider"></div>
+    <span class="aff-item">Genome Institute of Singapore, A*STAR</span>
+    <div class="aff-divider"></div>
+    <span class="aff-item">National University Heart Centre</span>
+  </div>
+</div>
+
+<!-- ══ ABOUT ═══════════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label">Principal Investigator</span>
+        <h2 class="section-title">Professor Roger Foo</h2>
+
+        <p>Roger trained with the late Professor David de Bono (British Heart Foundation Chair of Cardiology, Leicester) before moving to Cambridge, where he worked under Professor Morris Brown MD, FRCP, FMedSci, FRS at the Clinical Pharmacology Unit.</p>
+
+        <p>Awarded a Wellcome Trust Fellowship, Roger joined Professor Rick Kitsis at Albert Einstein College of Medicine, NYC, exploring the molecular regulation of heart failure and cardiomyocyte apoptosis. He returned to Cambridge in 2006 to start Foo Lab 1.0 at the Division of Cardiovascular Medicine, funded by the British Heart Foundation and Wellcome Trust.</p>
+
+        <p>Foo Lab 2.0 was established in Singapore in 2013, expanding into genomics, transcriptomics, and population health. Roger holds several leadership roles at NUS, founded the NUHS Clinician Scientist Academy, and serves as chair of the MOH Clinician Scientist Residency Research Panel and President of the College of Clinician Scientists, Academy of Medicine Singapore.</p>
+
+        <div class="about-quote">
+          <p>"Our mission is to make impactful scientific discoveries through world-class research — and to train the next generation of scientists who will change how we understand the heart."</p>
+        </div>
+
+        <div class="about-actions">
+          <a href="https://www.foo-lab.sg/roger-foo" class="btn btn-coral" target="_blank">Full Profile</a>
+          <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="btn btn-slate" target="_blank">Publications →</a>
+        </div>
+      </div>
+
+      <div class="about-photo-wrap reveal" style="transition-delay:0.15s">
+        <div class="about-photo-frame">
+          <img src="https://static.wixstatic.com/media/26b0e3_2031e4476ea24401979a712e958085d0~mv2.jpg/v1/fill/w_700,h_800,al_c,q_85/2.jpg" alt="Professor Roger Foo" />
+        </div>
+        <div class="about-photo-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ RESEARCH THEMES ════════════════════════════════════ -->
+<section class="research" id="research">
+  <div class="container">
+    <div class="research-header reveal">
+      <div>
+        <span class="section-label">What We Study</span>
+        <h2 class="section-title">Research Themes</h2>
+      </div>
+      <a href="https://www.foo-lab.sg/research" class="btn btn-slate" target="_blank">Research Overview →</a>
+    </div>
+
+    <div class="research-cards">
+      <div class="research-card reveal">
+        <img class="research-card-img"
+          src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=800&q=80"
+          alt="Single-cell RNA sequencing" />
+        <div class="research-card-body">
+          <span class="research-card-tag">Transcriptomics</span>
+          <h3 class="research-card-title">Non-coding RNAs & Gene Therapy</h3>
+          <p class="research-card-desc">We use single-cell and spatial RNA sequencing to identify cardiomyocyte subpopulations, characterise circular and long non-coding RNAs, and develop AAV-based gene therapy strategies for heart failure.</p>
+          <a href="https://www.foo-lab.sg/transcriptomics" class="research-card-link" target="_blank">Learn more</a>
+        </div>
+      </div>
+
+      <div class="research-card reveal" style="transition-delay:0.1s">
+        <img class="research-card-img"
+          src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=800&q=80"
+          alt="DNA epigenomics" />
+        <div class="research-card-body">
+          <span class="research-card-tag">Epigenomics</span>
+          <h3 class="research-card-title">Cardiac Epigenomics & Genetic Variation</h3>
+          <p class="research-card-desc">We have mapped the global cardiac enhancer–promoter landscape and characterised genetic variants influencing disease risk through cis-regulatory activity — with a particular focus on Southeast Asian populations.</p>
+          <a href="https://www.foo-lab.sg/epigenomics" class="research-card-link" target="_blank">Learn more</a>
+        </div>
+      </div>
+
+      <div class="research-card reveal" style="transition-delay:0.05s">
+        <img class="research-card-img"
+          src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80"
+          alt="Induced pluripotent stem cells" />
+        <div class="research-card-body">
+          <span class="research-card-tag">Stem Cells</span>
+          <h3 class="research-card-title">hESCs & iPSC Disease Modelling</h3>
+          <p class="research-card-desc">Using human embryonic and induced pluripotent stem cells, we model cardiac disease in vitro to probe cell-state transitions and test therapeutic interventions at single-cell resolution.</p>
+          <a href="https://www.foo-lab.sg/stem-cells" class="research-card-link" target="_blank">Learn more</a>
+        </div>
+      </div>
+
+      <div class="research-card reveal" style="transition-delay:0.15s">
+        <img class="research-card-img"
+          src="https://images.unsplash.com/photo-1576086476234-1103be98f096?w=800&q=80"
+          alt="Clinical cardiometabolic research" />
+        <div class="research-card-body">
+          <span class="research-card-tag">Clinical Research</span>
+          <h3 class="research-card-title">Cardiometabolic Disease & Prevention</h3>
+          <p class="research-card-desc">Closer to the patient — we combine clinical samples, population health data, and CRISPR-based functional genomics to tackle the looming cardiometabolic crisis across Southeast Asia.</p>
+          <a href="https://www.foo-lab.sg/project-reset" class="research-card-link" target="_blank">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROJECT RESET ══════════════════════════════════════ -->
+<section class="reset-section" id="reset">
+  <div class="container">
+    <div class="reset-grid">
+      <div class="reset-text reveal">
+        <span class="section-label">Clinical Initiative</span>
+        <h2 class="section-title">Project RESET</h2>
+        <p>Project RESET (Reducing Excess risk in Singapore through Enhanced Treatment) is a population-level clinical study aimed at preventing heart disease in Singapore. Working alongside primary care, community health, and national health bodies, we are identifying and intervening in high-risk individuals across Queenstown and beyond.</p>
+        <p>RESET brings together genomics, digital health, and community outreach in a concerted drive to reduce cardiovascular burden across Southeast Asia.</p>
+
+        <div class="reset-features">
+          <div class="reset-feat">
+            <div class="reset-feat-num">10k<span style="font-size:1rem">+</span></div>
+            <div class="reset-feat-label">Participants enrolled</div>
+          </div>
+          <div class="reset-feat">
+            <div class="reset-feat-num">SEA</div>
+            <div class="reset-feat-label">Regional focus</div>
+          </div>
+          <div class="reset-feat">
+            <div class="reset-feat-num">GP</div>
+            <div class="reset-feat-label">Primary care led</div>
+          </div>
+          <div class="reset-feat">
+            <div class="reset-feat-num">MOH</div>
+            <div class="reset-feat-label">Nationally supported</div>
+          </div>
+        </div>
+
+        <a href="https://www.project-reset.sg" class="btn btn-coral" target="_blank" style="margin-top:2rem">Visit Project RESET →</a>
+      </div>
+
+      <div class="reset-image reveal" style="transition-delay:0.15s">
+        <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&q=80" alt="Community health research Singapore" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VALUES ═════════════════════════════════════════════ -->
+<section class="values">
+  <div class="container reveal">
+    <span class="section-label">Our Culture</span>
+    <h2 class="section-title">Lab Values</h2>
+    <div class="values-grid">
+      <span class="value-pill">Complementarity</span>
+      <span class="value-pill">Connectivity</span>
+      <span class="value-pill">Creativity</span>
+      <span class="value-pill">Caring</span>
+      <span class="value-pill">Passion</span>
+      <span class="value-pill">Respect</span>
+      <span class="value-pill">Positivity</span>
+      <span class="value-pill">Excellence</span>
+      <span class="value-pill">Integrity</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TEAM SNAPSHOT ══════════════════════════════════════ -->
+<section class="team" id="team">
+  <div class="container">
+    <div class="team-header reveal">
+      <div>
+        <span class="section-label">The People</span>
+        <h2 class="section-title">Meet the Team</h2>
+      </div>
+      <a href="https://www.foo-lab.sg/our-team" class="btn btn-slate" target="_blank">Full Team →</a>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-card-img-wrap">
+          <img src="https://static.wixstatic.com/media/26b0e3_2031e4476ea24401979a712e958085d0~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Roger Foo" />
+        </div>
+        <div class="team-card-name">Roger Foo</div>
+        <div class="team-card-role">Professor of Medicine</div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.05s">
+        <div class="team-card-img-wrap">
+          <img src="https://static.wixstatic.com/media/26b0e3_80d2d40ff20441ef91de8b675e881d04~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Matias Autio" />
+        </div>
+        <div class="team-card-name">Matias Autio</div>
+        <div class="team-card-role">Senior Research Fellow</div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.1s">
+        <div class="team-card-img-wrap">
+          <img src="https://static.wixstatic.com/media/26b0e3_3f88c12adc2741cba32123e178dea41f~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Matthew Ackers-Johnson" />
+        </div>
+        <div class="team-card-name">Matthew Ackers-Johnson</div>
+        <div class="team-card-role">Assistant Professor</div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.15s">
+        <div class="team-card-img-wrap">
+          <img src="https://static.wixstatic.com/media/26b0e3_ba6309f6eabb4c9d95f48c26350b6278~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Rijan Gurung" />
+        </div>
+        <div class="team-card-name">Rijan Gurung</div>
+        <div class="team-card-role">Research Fellow</div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.0s">
+        <div class="team-card-img-wrap">
+          <img src="https://static.wixstatic.com/media/26b0e3_0651e30cc5c64bc08a45858983b1a6c7~mv2.jpeg/v1/fill/w_348,h_336,al_c,q_80/2.jpeg" alt="Prasanna Vidyasekar" />
+        </div>
+        <div class="team-card-name">Prasanna Vidyasekar</div>
+        <div class="team-card-role">Research Fellow</div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.05s">
+        <div class="team-card-img-wrap">
+          <img src="https://static.wixstatic.com/media/26b0e3_c20f3cd0009d491aa64855a17f9800f9~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Mick Lee" />
+        </div>
+        <div class="team-card-name">Mick Lee</div>
+        <div class="team-card-role">Research Fellow</div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.1s">
+        <div class="team-card-img-wrap">
+          <img src="https://static.wixstatic.com/media/26b0e3_6040a7accff043bb8ceadafb1b1f6ff8~mv2.jpeg/v1/fill/w_348,h_336,al_c,q_80/2.jpeg" alt="Yike Zhu" />
+        </div>
+        <div class="team-card-name">Yike Zhu</div>
+        <div class="team-card-role">Research Fellow</div>
+      </div>
+      <div class="team-card reveal" style="transition-delay:0.15s">
+        <div class="team-card-img-wrap">
+          <img src="https://static.wixstatic.com/media/26b0e3_7b52315cc53d4e3da3f3cf0ad6e9cb85~mv2.jpeg/v1/fill/w_348,h_336,al_c,q_80/2.jpeg" alt="Beverly Wong" />
+        </div>
+        <div class="team-card-name">Beverly Wong</div>
+        <div class="team-card-role">RESET Project Manager</div>
+      </div>
+    </div>
+
+    <div class="team-more">
+      <a href="https://www.foo-lab.sg/our-team" class="btn btn-coral" target="_blank">View All 45+ Team Members</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NEWS ═══════════════════════════════════════════════ -->
+<section class="news" id="news">
+  <div class="container">
+    <div class="news-header reveal">
+      <div>
+        <span class="section-label">Latest</span>
+        <h2 class="section-title">News & Updates</h2>
+      </div>
+      <a href="https://www.foo-lab.sg/news" class="btn btn-slate" target="_blank">All News →</a>
+    </div>
+
+    <div class="news-grid">
+      <div class="news-card reveal">
+        <img class="news-card-img"
+          src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80"
+          alt="RESET Townhall" />
+        <div class="news-card-body">
+          <div class="news-card-meta">Events · Oct 2025</div>
+          <h3 class="news-card-title">RESET Townhall Event (PIP) — Community Health Outreach</h3>
+          <a href="https://www.project-reset.sg/events" class="news-card-link" target="_blank">Read more</a>
+        </div>
+      </div>
+      <div class="news-card reveal" style="transition-delay:0.1s">
+        <img class="news-card-img"
+          src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?w=600&q=80"
+          alt="Research publications" />
+        <div class="news-card-body">
+          <div class="news-card-meta">Publications · 2025</div>
+          <h3 class="news-card-title">New Research on Spatial Transcriptomics in Cardiac Remodelling</h3>
+          <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="news-card-link" target="_blank">Read more</a>
+        </div>
+      </div>
+      <div class="news-card reveal" style="transition-delay:0.2s">
+        <img class="news-card-img"
+          src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80"
+          alt="Lab opportunities" />
+        <div class="news-card-body">
+          <div class="news-card-meta">Opportunities · Ongoing</div>
+          <h3 class="news-card-title">Join the Team — Open Positions for PhD Students & Research Fellows</h3>
+          <a href="https://www.foo-lab.sg/news" class="news-card-link" target="_blank">Read more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PUBLICATIONS STRIP ══════════════════════════════════ -->
+<section class="pubs-strip">
+  <div class="container">
+    <div class="pubs-inner reveal">
+      <div class="pubs-text">
+        <span class="section-label">Publications</span>
+        <h2 class="section-title" style="font-size:clamp(1.5rem,2.5vw,2rem);">Peer-reviewed Research</h2>
+        <p>Our work spans high-impact journals in cardiovascular medicine, genomics, and precision health. Browse the full publication record via NUS Discovery or GitHub.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem">
+          <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="btn btn-coral" target="_blank">View Publications</a>
+          <a href="https://github.com/Foo-Lab" class="btn btn-slate" target="_blank">GitHub →</a>
+        </div>
+      </div>
+      <div class="pubs-logos">
+        <span class="pubs-logo-pill">Nature Cardiovascular Research</span>
+        <span class="pubs-logo-pill">Circulation</span>
+        <span class="pubs-logo-pill">Nature Communications</span>
+        <span class="pubs-logo-pill">Cell Reports</span>
+        <span class="pubs-logo-pill">JACC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="nav-logo">
+          <div class="nav-logo-mark">F</div>
+          <div>
+            <div class="nav-logo-text" style="color:white">Foo Lab</div>
+            <div class="nav-logo-sub">NUS Medicine</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc">
+          Cardiac genomics, transcriptomics, epigenomics and precision medicine at the National University of Singapore and A*STAR Genome Institute of Singapore.
+        </p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="https://www.foo-lab.sg">Home</a></li>
+          <li><a href="https://www.foo-lab.sg/roger-foo">Roger Foo</a></li>
+          <li><a href="https://www.foo-lab.sg/research">Research</a></li>
+          <li><a href="https://www.foo-lab.sg/our-team">Our Team</a></li>
+          <li><a href="https://www.foo-lab.sg/news">News</a></li>
+          <li><a href="https://www.foo-lab.sg/projects-7">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-links">
+          <li><a href="https://www.foo-lab.sg/transcriptomics">Transcriptomics</a></li>
+          <li><a href="https://www.foo-lab.sg/epigenomics">Epigenomics</a></li>
+          <li><a href="https://www.foo-lab.sg/stem-cells">Stem Cells</a></li>
+          <li><a href="https://www.foo-lab.sg/project-reset">Project RESET</a></li>
+          <li><a href="https://github.com/Foo-Lab" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="https://www.foo-lab.sg">foo-lab.sg</a></li>
+          <li><a href="https://www.project-reset.sg" target="_blank">project-reset.sg</a></li>
+          <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications</a></li>
+          <li><a href="https://github.com/Foo-Lab" target="_blank">GitHub Repository</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">
+        © 2026 Foo Lab, National University of Singapore. All rights reserved.
+      </div>
+      <div class="footer-social">
+        <a href="https://github.com/Foo-Lab" target="_blank" title="GitHub">GH</a>
+        <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank" title="Publications">Pub</a>
+        <a href="https://www.project-reset.sg" target="_blank" title="Project RESET">RST</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Active nav link on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navItems = document.querySelectorAll('.nav-links li');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navItems.forEach(li => {
+      li.classList.remove('active');
+      const a = li.querySelector('a');
+      if (a && a.getAttribute('href') === `#${current}`) li.classList.add('active');
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
