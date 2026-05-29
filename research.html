@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — Foo Lab | NUS Medicine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Research-specific ───────────────────────────── */
+    .research-tabs { background: var(--white); border-bottom: 1px solid var(--slate-200); position: sticky; top: 64px; z-index: 50; }
+    .research-tabs-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+    .research-tabs-inner::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 1rem 1.5rem; font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+      cursor: pointer; border: none; background: transparent; color: var(--slate-500);
+      border-bottom: 2px solid transparent; transition: all var(--transition);
+    }
+    .tab-btn:hover { color: var(--slate-800); }
+    .tab-btn.active { color: var(--coral); border-bottom-color: var(--coral); }
+
+    /* ── Overview section ───────────────────────────── */
+    .overview { padding: 5rem 0; background: var(--white); }
+    .overview-text { max-width: 820px; margin: 0 auto; }
+    .overview-text p { font-size: 1rem; color: var(--slate-600); line-height: 1.85; margin-bottom: 1.5rem; }
+    .overview-text p:first-of-type { font-size: 1.1rem; color: var(--slate-700); }
+
+    /* ── Theme sections ─────────────────────────────── */
+    .theme-section { padding: 5rem 0; border-top: 1px solid var(--slate-200); }
+    .theme-section:nth-child(even) { background: var(--slate-50); }
+    .theme-hero {
+      background: var(--slate-900); padding: 4rem 0; margin-bottom: 4rem;
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .theme-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.18; }
+    .theme-hero-grad { position: absolute; inset: 0; background: rgba(15,23,42,0.82); }
+    .theme-hero-content { position: relative; z-index: 1; }
+    .theme-hero-num { font-family: var(--font-serif); font-size: 1rem; color: var(--coral); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .theme-hero h2 { font-family: var(--font-serif); font-size: clamp(1.8rem,3.5vw,3rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 0.75rem; }
+    .theme-hero-sub { font-size: 1rem; color: var(--coral); font-style: italic; margin-bottom: 1rem; font-family: var(--font-serif); }
+    .theme-hero p { font-size: 0.95rem; color: var(--slate-300); max-width: 640px; margin: 0 auto; line-height: 1.7; }
+
+    .topic-list { display: flex; flex-direction: column; gap: 0; }
+    .topic-item {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+      padding: 3.5rem 0; border-bottom: 1px solid var(--slate-200);
+    }
+    .topic-item:last-child { border-bottom: none; }
+    .topic-item.reverse { direction: rtl; }
+    .topic-item.reverse > * { direction: ltr; }
+    .topic-num { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; color: var(--slate-200); line-height: 1; margin-bottom: 0.25rem; }
+    .topic-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; color: var(--coral); margin-bottom: 0.85rem; }
+    .topic-desc { font-size: 0.92rem; color: var(--slate-600); line-height: 1.8; }
+    .topic-img { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1); border: 1px solid var(--slate-200); }
+    .topic-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+
+    /* ── Tab panel visibility ───────────────────────── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    @media (max-width: 768px) {
+      .topic-item, .topic-item.reverse { grid-template-columns: 1fr; direction: ltr; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">F</div>
+      <div><div class="nav-logo-text">Foo Lab</div><div class="nav-logo-sub">NUS Medicine · CVRI · A*STAR GIS</div></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="roger-foo.html">Roger Foo</a></li>
+      <li class="active"><a href="research.html">Research</a></li>
+      <li><a href="project-reset.html">Project RESET</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="index.html#news">News</a></li>
+      <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank" class="nav-cta">Publications</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roger-foo.html">Roger Foo</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="project-reset.html">Project RESET</a></li>
+    <li><a href="team.html">Our Team</a></li>
+    <li><a href="index.html#news">News</a></li>
+    <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications →</a></li>
+  </ul>
+</div>
+
+<!-- Hero -->
+<section class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1576671081837-49000212a370?w=1800&q=80')"></div>
+  <div class="page-hero-grad"></div>
+  <div class="container page-hero-content">
+    <div class="page-hero-eyebrow">What We Do</div>
+    <h1>Research <em>Overview</em></h1>
+    <p>At Foo Lab, our mission is to achieve impactful scientific discoveries through world-class research. We are a cardiac centric lab involved in clinical and basic science research into heart failure.</p>
+  </div>
+</section>
+
+<!-- Sticky tabs -->
+<div class="research-tabs">
+  <div class="research-tabs-inner">
+    <button class="tab-btn active" data-tab="overview">Overview</button>
+    <button class="tab-btn" data-tab="transcriptomics">Transcriptomics</button>
+    <button class="tab-btn" data-tab="epigenomics">Epigenomics</button>
+    <button class="tab-btn" data-tab="stemcells">Stem Cells</button>
+  </div>
+</div>
+
+<!-- OVERVIEW TAB -->
+<div class="tab-panel active" id="tab-overview">
+  <section class="overview">
+    <div class="container">
+      <div class="overview-text reveal">
+        <p>The main interest of the Foo Lab is in the molecular mechanisms that regulate cardiac biology and disease; particularly genomic, transcriptomic and epigenomic patterns. Previously we have utilised single cell RNA-sequencing to identify cardiomyocyte subpopulations that transition to immature dedifferentiated cell states during Heart Failure and to characterise novel deregulated RNAs such as circular or long non-coding RNAs.</p>
+        <p>Another key interest is to understand genetic variation that influences disease risk and biology particularly in relation to South East Asia. We have mapped out the global cardiac enhancer–promoter landscape, and identified genetic variants that influence inter-individual variation through cis regulatory activity.</p>
+        <p>The lab also takes special effort to adopt, implement and optimise new technologies which are fundamental to evolving our understanding of biology and disease. Recent examples include moving into spatial RNA-sequencing, developing RNA sensors and carrying out functional genomic screens using CRISPR based tools. Other established technologies that we rely heavily upon include embryonic stem cells and induced pluripotent stem cells, as well as refined methodologies for primary cell cultures, in vivo surgical models and AAV-based gene therapy approaches.</p>
+        <p>In addition to all things molecular and cardiac research, the Foo Lab is passionate and committed to training young scientists and clinician-scientists, inspiring knowledge and challenging people. Last but not least, Foo Lab has also begun to participate in population health initiatives and outreach, such as through the Queenstown Health District*, to promote a Heart Healthy Singapore.</p>
+        <p>Stay tuned for upcoming updates, publications and opportunities to work with us.</p>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem" class="reveal">
+        <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="btn btn-coral" target="_blank">View Publications</a>
+        <a href="https://github.com/Foo-Lab" class="btn btn-slate" target="_blank">GitHub Repository →</a>
+      </div>
+
+      <!-- Research theme cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:4rem">
+        <div class="reveal" style="background:var(--slate-50);border:1px solid var(--slate-200);border-radius:10px;padding:2rem;cursor:pointer" onclick="switchTab('transcriptomics')">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--coral);margin-bottom:0.5rem">Theme 01</div>
+          <div style="font-family:var(--font-serif);font-size:1.15rem;font-weight:600;color:var(--slate-900);margin-bottom:0.75rem">Transcriptomics, Non-Coding RNAs & Gene Therapy</div>
+          <div style="font-size:0.85rem;color:var(--slate-500);line-height:1.7">RNA-seq, circ-RNA-seq, sc-RNA-seq and spatial transcriptomics to understand pathways and gene expression in the heart.</div>
+          <div style="margin-top:1rem;font-size:0.82rem;font-weight:600;color:var(--coral)">Explore →</div>
+        </div>
+        <div class="reveal" style="background:var(--slate-50);border:1px solid var(--slate-200);border-radius:10px;padding:2rem;cursor:pointer;transition-delay:0.08s" onclick="switchTab('epigenomics')">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--coral);margin-bottom:0.5rem">Theme 02</div>
+          <div style="font-family:var(--font-serif);font-size:1.15rem;font-weight:600;color:var(--slate-900);margin-bottom:0.75rem">Cardiac Epigenomics & Genetic Variation</div>
+          <div style="font-size:0.85rem;color:var(--slate-500);line-height:1.7">Mapping the global cardiac enhancer–promoter landscape and identifying genetic variants influencing disease risk.</div>
+          <div style="margin-top:1rem;font-size:0.82rem;font-weight:600;color:var(--coral)">Explore →</div>
+        </div>
+        <div class="reveal" style="background:var(--slate-50);border:1px solid var(--slate-200);border-radius:10px;padding:2rem;cursor:pointer;transition-delay:0.16s" onclick="switchTab('stemcells')">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--coral);margin-bottom:0.5rem">Theme 03</div>
+          <div style="font-family:var(--font-serif);font-size:1.15rem;font-weight:600;color:var(--slate-900);margin-bottom:0.75rem">hESCs, iPSCs & Disease Modelling</div>
+          <div style="font-size:0.85rem;color:var(--slate-500);line-height:1.7">Using human embryonic and induced pluripotent stem cells to model cardiac disease and test therapeutic interventions.</div>
+          <div style="margin-top:1rem;font-size:0.82rem;font-weight:600;color:var(--coral)">Explore →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- TRANSCRIPTOMICS TAB -->
+<div class="tab-panel" id="tab-transcriptomics">
+  <div class="theme-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=1800&q=80')"></div>
+    <div class="page-hero-grad"></div>
+    <div class="theme-hero-content">
+      <div class="theme-hero-num">Theme 01</div>
+      <h2>Transcriptomics, Non-Coding RNAs<br>and Gene Therapy</h2>
+      <div class="theme-hero-sub">Mechanistic Heart Failure Research</div>
+      <p>We use gene expression technologies like RNA-seq, circ-RNA-seq, sc-RNA-seq and spatial transcriptomics to understand pathways and gene expression in the heart and identify new molecules for characterisation.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="topic-list">
+      <div class="topic-item reveal">
+        <div>
+          <div class="topic-num">01</div>
+          <div class="topic-title">Functional Screens</div>
+          <p class="topic-desc">CRISPR-screening, both conventional and CRISPRi/CRISPRa, can facilitate the functional elucidation of genes and pathways in processes in an unbiased and genome wide-scale. We have used this to understand how cardiomyocytes deal with stress and how they differentiate and mature using hESC/iPSC models.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1628595351029-c2bf17511435?w=700&q=80" alt="CRISPR functional screens" />
+        </div>
+      </div>
+      <div class="topic-item reverse reveal">
+        <div>
+          <div class="topic-num">02</div>
+          <div class="topic-title">Functional Therapeutics</div>
+          <p class="topic-desc">Gene therapy in the form of delivering genes via mRNA, circular RNA and AAV methods in vivo allows us to test pathways and molecules that can influence heart function and pave the way for new medicinal targets.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?w=700&q=80" alt="Gene therapy" />
+        </div>
+      </div>
+      <div class="topic-item reveal">
+        <div>
+          <div class="topic-num">03</div>
+          <div class="topic-title">Gene Expression Profiling</div>
+          <p class="topic-desc">Technologies are rapidly improving year on year. We adopted RNA-seq and scRNA analysis early in the field and identified molecules that change during cardiac stress, cardiomyocyte dedifferentiation. Some included novel RNA species such as long noncoding and circular RNAs. We are also adopting spatial RNA-seq in the lab.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=700&q=80" alt="Gene expression profiling" />
+        </div>
+      </div>
+      <div class="topic-item reverse reveal">
+        <div>
+          <div class="topic-num">04</div>
+          <div class="topic-title">Mechanisms</div>
+          <p class="topic-desc">Long non-coding RNAs (and now micropeptides) and circular RNAs as well as pathways such as dedifferentiation and reprogramming need mechanistic study to understand how to manipulate these processes in heart health and disease. We have and continue to work on a number of these molecules and pathways to identify new drug targets and molecular regulators of heart health and metabolism.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1576086476234-1103be98f096?w=700&q=80" alt="Molecular mechanisms" />
+        </div>
+      </div>
+    </div>
+    <div style="padding:3rem 0;text-align:center">
+      <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="btn btn-coral" target="_blank">Related Publications →</a>
+    </div>
+  </div>
+</div>
+
+<!-- EPIGENOMICS TAB -->
+<div class="tab-panel" id="tab-epigenomics">
+  <div class="theme-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=1800&q=80')"></div>
+    <div class="page-hero-grad"></div>
+    <div class="theme-hero-content">
+      <div class="theme-hero-num">Theme 02</div>
+      <h2>Cardiac Epigenomics<br>& Genetic Variation</h2>
+      <div class="theme-hero-sub">Enhancer Biology & Disease Risk</div>
+      <p>We have mapped the global cardiac enhancer–promoter landscape and characterised genetic variants influencing disease risk through cis-regulatory activity, with a particular focus on Southeast Asian populations.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="topic-list">
+      <div class="topic-item reveal">
+        <div>
+          <div class="topic-num">01</div>
+          <div class="topic-title">Cardiac Enhancer Mapping</div>
+          <p class="topic-desc">We have published global maps of the cardiac enhancer–promoter landscape using ChIP-seq, ATAC-seq and Hi-C approaches. These maps allow us to understand how gene regulatory elements control cardiac gene expression in health and disease.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1518152006812-edab29b069ac?w=700&q=80" alt="Epigenomics mapping" />
+        </div>
+      </div>
+      <div class="topic-item reverse reveal">
+        <div>
+          <div class="topic-num">02</div>
+          <div class="topic-title">Genetic Variation & Disease Risk</div>
+          <p class="topic-desc">We identify genetic variants — particularly those enriched in Southeast Asian populations — that influence disease risk through cis-regulatory activity. This connects population genomics with mechanistic cardiac biology.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=700&q=80" alt="Genetic variation" />
+        </div>
+      </div>
+      <div class="topic-item reveal">
+        <div>
+          <div class="topic-num">03</div>
+          <div class="topic-title">3D Chromatin Organisation</div>
+          <p class="topic-desc">In 2017 the lab published an in-depth analysis of cardiac chromatin 3D organisation, delineating detailed maps of cardiac enhancer–promoter interactions. We continue to study how 3D genome architecture regulates gene expression in the failing heart.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=80" alt="Chromatin organisation" />
+        </div>
+      </div>
+    </div>
+    <div style="padding:3rem 0;text-align:center">
+      <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="btn btn-coral" target="_blank">Related Publications →</a>
+    </div>
+  </div>
+</div>
+
+<!-- STEM CELLS TAB -->
+<div class="tab-panel" id="tab-stemcells">
+  <div class="theme-hero">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1800&q=80')"></div>
+    <div class="page-hero-grad"></div>
+    <div class="theme-hero-content">
+      <div class="theme-hero-num">Theme 03</div>
+      <h2>hESCs, iPSCs<br>& Disease Modelling</h2>
+      <div class="theme-hero-sub">In Vitro Cardiac Biology</div>
+      <p>Using human embryonic and induced pluripotent stem cells, we model cardiac disease in vitro to probe cell-state transitions and test therapeutic interventions at single-cell resolution.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="topic-list">
+      <div class="topic-item reveal">
+        <div>
+          <div class="topic-num">01</div>
+          <div class="topic-title">hESC & iPSC Differentiation</div>
+          <p class="topic-desc">We have developed and refined protocols for differentiating human embryonic and induced pluripotent stem cells into cardiomyocytes, cardiac fibroblasts, endothelial cells and smooth muscle cells for use in disease modelling and drug testing.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=700&q=80" alt="Stem cell differentiation" />
+        </div>
+      </div>
+      <div class="topic-item reverse reveal">
+        <div>
+          <div class="topic-num">02</div>
+          <div class="topic-title">Cell State Transitions</div>
+          <p class="topic-desc">A key question in cardiac biology is how cardiomyocytes transition between cell states during injury and regeneration. We use single-cell transcriptomics and epigenomics to map these transitions and identify regulators that could be targeted therapeutically.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1614935151651-0bea6508db6b?w=700&q=80" alt="Cell state transitions" />
+        </div>
+      </div>
+      <div class="topic-item reveal">
+        <div>
+          <div class="topic-num">03</div>
+          <div class="topic-title">Multicellular Co-culture Models</div>
+          <p class="topic-desc">Working with Dr Matt Ackers-Johnson, we have developed multicellular in vitro models of cardiovascular disease to study the intercellular signalling between diverse cardiac cell types — particularly during the inflammatory response following ischemic injury.</p>
+        </div>
+        <div class="topic-img">
+          <img src="https://images.unsplash.com/photo-1576086476234-1103be98f096?w=700&q=80" alt="Co-culture models" />
+        </div>
+      </div>
+    </div>
+    <div style="padding:3rem 0;text-align:center">
+      <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="btn btn-coral" target="_blank">Related Publications →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="nav-logo"><div class="nav-logo-mark">F</div><div><div class="nav-logo-text" style="color:white">Foo Lab</div><div class="nav-logo-sub">NUS Medicine</div></div></div>
+        <p class="footer-brand-desc">Cardiac genomics, transcriptomics, epigenomics and precision medicine at the National University of Singapore and A*STAR Genome Institute of Singapore.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li><li><a href="roger-foo.html">Roger Foo</a></li>
+          <li><a href="research.html">Research</a></li><li><a href="team.html">Our Team</a></li>
+          <li><a href="project-reset.html">Project RESET</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-links">
+          <li><a href="research.html">Transcriptomics</a></li><li><a href="research.html">Epigenomics</a></li>
+          <li><a href="research.html">Stem Cells</a></li><li><a href="project-reset.html">Project RESET</a></li>
+          <li><a href="https://github.com/Foo-Lab" target="_blank">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="https://www.foo-lab.sg">foo-lab.sg</a></li>
+          <li><a href="https://www.project-reset.sg" target="_blank">project-reset.sg</a></li>
+          <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications</a></li>
+          <li><a href="https://github.com/Foo-Lab" target="_blank">GitHub Repository</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 Foo Lab, National University of Singapore. All rights reserved.</div>
+      <div class="footer-social">
+        <a href="https://github.com/Foo-Lab" target="_blank">GH</a>
+        <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Pub</a>
+        <a href="https://www.project-reset.sg" target="_blank">RST</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  function switchTab(name) {
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.toggle('active', b.dataset.tab === name); });
+    document.querySelectorAll('.tab-panel').forEach(p => { p.classList.toggle('active', p.id === 'tab-' + name); });
+    window.scrollTo({ top: 64, behavior: 'smooth' });
+  }
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+  });
+  // Check URL hash
+  const hash = window.location.hash.replace('#','');
+  if (['transcriptomics','epigenomics','stemcells'].includes(hash)) switchTab(hash);
+
+  // Mobile nav
+  document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('open'));
+  document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);} }), {threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
