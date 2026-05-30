@@ -117,3 +117,8 @@ footer { background: var(--slate-950); padding: 4rem 0 2rem; border-top: 1px sol
 @media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── Global text justification ── */
+p, li, .topic-desc, .profile-bio p, .overview-text p, .reset-overview-text p,
+.footer-brand-desc, .news-card-desc, .hero-desc, .page-hero p,
+.about-text p, .rf-bio-text p { text-align: justify; }

@@ -1,176 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Our Team — Foo Lab | NUS Medicine</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
   <style>
-    .filter-bar{background:var(--white);border-bottom:1px solid var(--slate-200);position:sticky;top:64px;z-index:50}
-    .filter-inner{max-width:var(--max-w);margin:0 auto;padding:.85rem 2rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
-    .filter-inner::-webkit-scrollbar{display:none}
-    .filter-btn{padding:.45rem 1.1rem;border-radius:999px;font-size:.8rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1.5px solid var(--slate-200);background:transparent;color:var(--slate-600);transition:all var(--transition)}
-    .filter-btn:hover{border-color:var(--coral);color:var(--coral)}
-    .filter-btn.active{background:var(--coral);border-color:var(--coral);color:white}
-    .team-section{padding:4rem 0 6rem;background:var(--slate-50)}
-    .team-group{margin-bottom:4rem}
-    .team-group-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--slate-400);padding-bottom:1rem;border-bottom:1px solid var(--slate-200);margin-bottom:2rem}
-    .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:1.25rem}
-    .team-card{background:var(--white);border-radius:12px;padding:1.5rem 1rem 1.25rem;text-align:center;border:1px solid var(--slate-200);transition:box-shadow var(--transition),transform var(--transition),border-color var(--transition);text-decoration:none;display:block;color:inherit}
-    .team-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.09);transform:translateY(-3px);border-color:rgba(249,115,22,.3)}
-    .team-card-img-wrap{border-radius:50%;overflow:hidden;width:84px;height:84px;margin:0 auto .85rem;border:3px solid var(--slate-200);transition:border-color var(--transition)}
-    .team-card:hover .team-card-img-wrap{border-color:var(--coral)}
-    .team-card-img-wrap img{width:100%;height:100%;object-fit:cover}
-    .team-card-name{font-size:.875rem;font-weight:600;color:var(--slate-800);line-height:1.3}
-    .team-card-role{font-size:.73rem;color:var(--slate-500);margin-top:.2rem;line-height:1.4}
-    .team-card-arrow{display:inline-block;margin-top:.65rem;font-size:.75rem;font-weight:600;color:var(--coral);opacity:0;transition:opacity var(--transition)}
-    .team-card:hover .team-card-arrow{opacity:1}
-    .team-card.no-profile{pointer-events:none;opacity:.85}
-    .team-card.no-profile:hover{box-shadow:none;transform:none;border-color:var(--slate-200)}
-    @media(max-width:640px){.team-grid{grid-template-columns:repeat(2,1fr)}}
-  </style>
+  .filter-bar{background:var(--white);border-bottom:1px solid var(--slate-200);position:sticky;top:64px;z-index:50}
+  .filter-inner{max-width:var(--max-w);margin:0 auto;padding:.85rem 2rem;display:flex;gap:.5rem;overflow-x:auto;scrollbar-width:none}
+  .filter-inner::-webkit-scrollbar{display:none}
+  .filter-btn{padding:.45rem 1.1rem;border-radius:999px;font-size:.8rem;font-weight:600;white-space:nowrap;cursor:pointer;border:1.5px solid var(--slate-200);background:transparent;color:var(--slate-600);transition:all var(--transition)}
+  .filter-btn:hover{border-color:var(--coral);color:var(--coral)}
+  .filter-btn.active{background:var(--coral);border-color:var(--coral);color:white}
+  .team-section{padding:4rem 0 6rem;background:var(--slate-50)}
+  .team-group{margin-bottom:4rem}
+  .team-group-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--slate-400);padding-bottom:1rem;border-bottom:1px solid var(--slate-200);margin-bottom:2rem}
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:1.25rem}
+  .team-card{background:var(--white);border-radius:12px;padding:1.5rem 1rem 1.25rem;text-align:center;border:1px solid var(--slate-200);transition:box-shadow var(--transition),transform var(--transition),border-color var(--transition);text-decoration:none;display:block;color:inherit}
+  .team-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.09);transform:translateY(-3px);border-color:rgba(249,115,22,.3)}
+  .team-card-img-wrap{border-radius:50%;overflow:hidden;width:84px;height:84px;margin:0 auto .85rem;border:3px solid var(--slate-200);transition:border-color var(--transition)}
+  .team-card:hover .team-card-img-wrap{border-color:var(--coral)}
+  .team-card-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top}
+  .team-card-name{font-size:.875rem;font-weight:600;color:var(--slate-800);line-height:1.3}
+  .team-card-role{font-size:.73rem;color:var(--slate-500);margin-top:.2rem;line-height:1.4}
+  .team-card-arrow{display:inline-block;margin-top:.65rem;font-size:.75rem;font-weight:600;color:var(--coral);opacity:0;transition:opacity var(--transition)}
+  .team-card:hover .team-card-arrow{opacity:1}
+  @media(max-width:640px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
 </head>
-<body>
-<nav>
+<body><nav>
   <div class="nav-inner">
     <a href="index.html" class="nav-logo"><div class="nav-logo-mark">F</div><div><div class="nav-logo-text">Foo Lab</div><div class="nav-logo-sub">NUS Medicine · CVRI · A*STAR GIS</div></div></a>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li><li><a href="roger-foo.html">Roger Foo</a></li>
-      <li><a href="research.html">Research</a></li><li><a href="project-reset.html">Project RESET</a></li>
-      <li class="active"><a href="team.html">Our Team</a></li>
-      <li><a href="index.html#news">News</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="roger-foo.html">Roger Foo</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="project-reset.html">Project RESET</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="news.html">News</a></li>
       <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank" class="nav-cta">Publications</a></li>
     </ul>
     <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
 </nav>
 <div class="nav-mobile" id="mobileMenu"><ul>
-  <li><a href="index.html">Home</a></li><li><a href="roger-foo.html">Roger Foo</a></li>
-  <li><a href="research.html">Research</a></li><li><a href="project-reset.html">Project RESET</a></li>
-  <li><a href="team.html">Our Team</a></li><li><a href="index.html#news">News</a></li>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="roger-foo.html">Roger Foo</a></li>
+  <li><a href="research.html">Research</a></li>
+  <li><a href="project-reset.html">Project RESET</a></li>
+  <li><a href="team.html">Our Team</a></li>
+  <li><a href="news.html">News</a></li>
   <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications →</a></li>
 </ul></div>
-
 <section class="page-hero">
   <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1800&q=80')"></div>
   <div class="page-hero-grad"></div>
   <div class="container page-hero-content">
     <div class="page-hero-eyebrow">The People</div>
     <h1>Meet the <em>Foo Lab</em> Team</h1>
-    <p>A multidisciplinary group of scientists, clinicians, and researchers united by a passion for understanding the heart and improving cardiovascular health across Southeast Asia. Click any card to view their full profile.</p>
+    <p>51 scientists, clinicians, and researchers united by a passion for understanding the heart and improving cardiovascular health across Southeast Asia. Click any card to view their full profile.</p>
   </div>
 </section>
-
-<div class="filter-bar">
-  <div class="filter-inner">
-    <button class="filter-btn active" data-filter="all">All Members</button>
-    <button class="filter-btn" data-filter="pi">Principal Investigator</button>
-    <button class="filter-btn" data-filter="senior">Senior Fellows & APs</button>
-    <button class="filter-btn" data-filter="fellow">Research Fellows</button>
-    <button class="filter-btn" data-filter="phd">PhD Students</button>
-    <button class="filter-btn" data-filter="staff">Research Staff</button>
-    <button class="filter-btn" data-filter="reset">Project RESET</button>
-  </div>
-</div>
-
+<div class="filter-bar"><div class="filter-inner">
+  <button class="filter-btn active" data-filter="all">All Members</button>
+  <button class="filter-btn" data-filter="pi">Principal Investigator</button>
+  <button class="filter-btn" data-filter="senior">Senior Fellows & APs</button>
+  <button class="filter-btn" data-filter="fellow">Research Fellows</button>
+  <button class="filter-btn" data-filter="phd">PhD Students</button>
+  <button class="filter-btn" data-filter="staff">Research Staff</button>
+  <button class="filter-btn" data-filter="reset">Project RESET</button>
+</div></div>
 <section class="team-section"><div class="container">
-
-  <div class="team-group reveal" data-group="pi">
-    <div class="team-group-label">Principal Investigator</div>
-    <div class="team-grid">
-      <a href="profile-roger-foo.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_2031e4476ea24401979a712e958085d0~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Roger Foo" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div><div class="team-card-name">Roger Foo</div><div class="team-card-role">Professor of Medicine · PI</div><span class="team-card-arrow">View Profile →</span></a>
-    </div>
-  </div>
-
-  <div class="team-group reveal" data-group="senior">
-    <div class="team-group-label">Senior Research Fellows & Assistant Professors</div>
-    <div class="team-grid">
-      <a href="profile-matthew-ackers-johnson.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_3f88c12adc2741cba32123e178dea41f~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Matthew Ackers-Johnson" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80'"/></div><div class="team-card-name">Matthew Ackers-Johnson</div><div class="team-card-role">Assistant Professor</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-matias-autio.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_80d2d40ff20441ef91de8b675e881d04~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Matias Autio" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80'"/></div><div class="team-card-name">Matias Ilmari Autio</div><div class="team-card-role">Senior Research Fellow</div><span class="team-card-arrow">View Profile →</span></a>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80" alt="Lieng Hsi Ling"/></div><div class="team-card-name">Lieng Hsi Ling</div><div class="team-card-role">Senior Research Fellow</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt="Lee Siggens"/></div><div class="team-card-name">Lee Siggens</div><div class="team-card-role">Senior Research Fellow</div></div>
-    </div>
-  </div>
-
-  <div class="team-group reveal" data-group="fellow">
-    <div class="team-group-label">Research Fellows</div>
-    <div class="team-grid">
-      <a href="profile-rijan-gurung.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_ba6309f6eabb4c9d95f48c26350b6278~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Rijan Gurung" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80'"/></div><div class="team-card-name">Rijan Gurung</div><div class="team-card-role">Research Fellow</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-prasanna-vidyasekar.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_0651e30cc5c64bc08a45858983b1a6c7~mv2.jpeg/v1/fill/w_348,h_336,al_c,q_80/2.jpeg" alt="Prasanna Vidyasekar" onerror="this.src='https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=200&q=80'"/></div><div class="team-card-name">Prasanna Vidyasekar</div><div class="team-card-role">Research Fellow</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-mick-lee.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_c20f3cd0009d491aa64855a17f9800f9~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Mick Lee" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80'"/></div><div class="team-card-name">Mick Lee</div><div class="team-card-role">Research Fellow</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-yike-zhu.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_6040a7accff043bb8ceadafb1b1f6ff8~mv2.jpeg/v1/fill/w_348,h_336,al_c,q_80/2.jpeg" alt="Yike Zhu" onerror="this.src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80'"/></div><div class="team-card-name">Yike Zhu</div><div class="team-card-role">Research Fellow</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-abhinit-ambastha.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_abhinit~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Abhinit Kumar Ambastha" onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80'"/></div><div class="team-card-name">Abhinit Kumar Ambastha</div><div class="team-card-role">Research Fellow</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-vicky-lai.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_vickylai~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Vicky Lai" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80'"/></div><div class="team-card-name">Vicky Lai</div><div class="team-card-role">Research Fellow</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-luu-danh-anh-tuan.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_luutuan~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Luu Danh Anh Tuan" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div><div class="team-card-name">Luu Danh Anh Tuan</div><div class="team-card-role">Research Fellow (Surgery)</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-qian-hongliang.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_qianhongliang~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Qian Hongliang" onerror="this.src='https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80'"/></div><div class="team-card-name">Qian Hongliang</div><div class="team-card-role">Research Fellow</div><span class="team-card-arrow">View Profile →</span></a>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt=""/></div><div class="team-card-name">Jia Yao Chia</div><div class="team-card-role">Research Fellow</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt=""/></div><div class="team-card-name">Ching-Hui Sia</div><div class="team-card-role">Research Fellow</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&q=80" alt=""/></div><div class="team-card-name">Lionel Lye</div><div class="team-card-role">Research Fellow</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=200&q=80" alt=""/></div><div class="team-card-name">Wang Jizhong</div><div class="team-card-role">Research Fellow</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=200&q=80" alt=""/></div><div class="team-card-name">Sivakumar Viswanathan</div><div class="team-card-role">Research Fellow</div></div>
-    </div>
-  </div>
-
-  <div class="team-group reveal" data-group="phd">
-    <div class="team-group-label">PhD Students</div>
-    <div class="team-grid">
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" alt=""/></div><div class="team-card-name">Lim Shir Lynn</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=200&q=80" alt=""/></div><div class="team-card-name">Dalakoti Mayank</div><div class="team-card-role">PhD Student / Clinician Scientist</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt=""/></div><div class="team-card-name">Zhang Fan</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt=""/></div><div class="team-card-name">Xiao Tian</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt=""/></div><div class="team-card-name">Shijie Tao</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80" alt=""/></div><div class="team-card-name">Gan Pek Yee</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt=""/></div><div class="team-card-name">Teh Rou Hui</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=200&q=80" alt=""/></div><div class="team-card-name">Wang Sining</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&q=80" alt=""/></div><div class="team-card-name">Surendra Bhatt</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt=""/></div><div class="team-card-name">Nurhidayah Binte Mohd</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80" alt=""/></div><div class="team-card-name">Elvira Forte</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt=""/></div><div class="team-card-name">Ng Wai Lim</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" alt=""/></div><div class="team-card-name">Shiela Gomes</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=200&q=80" alt=""/></div><div class="team-card-name">Srinivas Sheshagiri</div><div class="team-card-role">PhD Student</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt=""/></div><div class="team-card-name">Zhang Yuchen</div><div class="team-card-role">PhD Student</div></div>
-    </div>
-  </div>
-
-  <div class="team-group reveal" data-group="staff reset">
-    <div class="team-group-label">Research Staff, Coordinators & Project RESET</div>
-    <div class="team-grid">
-      <a href="profile-beverly-wong.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_7b52315cc53d4e3da3f3cf0ad6e9cb85~mv2.jpeg/v1/fill/w_348,h_336,al_c,q_80/2.jpeg" alt="Beverly Wong" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80'"/></div><div class="team-card-name">Beverly Wong</div><div class="team-card-role">RESET Project Manager</div><span class="team-card-arrow">View Profile →</span></a>
-      <a href="profile-amisha-sharma.html" class="team-card"><div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_amisha~mv2.jpg/v1/fill/w_348,h_336,al_c,q_80/2.jpg" alt="Amisha Sharma" onerror="this.src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80'"/></div><div class="team-card-name">Amisha Sharma</div><div class="team-card-role">Research Coordinator & Outreach Lead</div><span class="team-card-arrow">View Profile →</span></a>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80" alt=""/></div><div class="team-card-name">Winston Tan</div><div class="team-card-role">Lab Manager</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80" alt=""/></div><div class="team-card-name">Serene Lim</div><div class="team-card-role">Research Coordinator, RESET</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=200&q=80" alt=""/></div><div class="team-card-name">Mohd Faizal</div><div class="team-card-role">Research Coordinator, RESET</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80" alt=""/></div><div class="team-card-name">Huang Shan</div><div class="team-card-role">Research Associate</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80" alt=""/></div><div class="team-card-name">Cheryl Lim</div><div class="team-card-role">Research Associate, RESET</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&q=80" alt=""/></div><div class="team-card-name">Keith Leow</div><div class="team-card-role">Research Associate</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&q=80" alt=""/></div><div class="team-card-name">Joanna Tan</div><div class="team-card-role">Research Coordinator, RESET</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt=""/></div><div class="team-card-name">Raghav Kakar</div><div class="team-card-role">Research Associate</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt=""/></div><div class="team-card-name">Samantha Loh</div><div class="team-card-role">Research Coordinator, RESET</div></div>
-      <div class="team-card no-profile"><div class="team-card-img-wrap"><img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=200&q=80" alt=""/></div><div class="team-card-name">Hazwani Binte</div><div class="team-card-role">Research Coordinator, RESET</div></div>
-    </div>
-  </div>
-
-  <div class="reveal" style="text-align:center;padding:1rem 0 2rem">
-    <p style="font-size:.85rem;color:var(--slate-400)">Greyed cards = profiles coming soon. Upload photos and bios to activate them.</p>
-  </div>
-
+<div class="team-group reveal" data-group="pi">
+<div class="team-group-label">Principal Investigator</div>
+<div class="team-grid">
+<a href="profile-roger-foo.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_2031e4476ea24401979a712e958085d0~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_2031e4476ea24401979a712e958085d0~mv2.jpg" alt="Roger Foo" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Roger Foo</div>
+  <div class="team-card-role">Professor of Medicine</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+</div></div>
+<div class="team-group reveal" data-group="senior">
+<div class="team-group-label">Senior Research Fellows & Assistant Professors</div>
+<div class="team-grid">
+<a href="profile-matthew-ackers-johnson.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_3f88c12adc2741cba32123e178dea41f~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_3f88c12adc2741cba32123e178dea41f~mv2.jpg" alt="Matthew Ackers-Johnson" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Matthew Ackers-Johnson</div>
+  <div class="team-card-role">Assistant Professor</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-matias-ilmari-autio.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_80d2d40ff20441ef91de8b675e881d04~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_80d2d40ff20441ef91de8b675e881d04~mv2.jpg" alt="Matias Ilmari Autio" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Matias Ilmari Autio</div>
+  <div class="team-card-role">Senior Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+</div></div>
+<div class="team-group reveal" data-group="fellow">
+<div class="team-group-label">Research Fellows</div>
+<div class="team-grid">
+<a href="profile-rijan-gurung.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_ba6309f6eabb4c9d95f48c26350b6278~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_ba6309f6eabb4c9d95f48c26350b6278~mv2.jpg" alt="Rijan Gurung" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Rijan Gurung</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-mick-lee.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_c20f3cd0009d491aa64855a17f9800f9~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_c20f3cd0009d491aa64855a17f9800f9~mv2.jpg" alt="Mick Lee" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Mick Lee</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-francesco-ruberto.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_e605b48e3d9b44aab6cf0c605eec3f8e~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_e605b48e3d9b44aab6cf0c605eec3f8e~mv2.jpeg" alt="Francesco Ruberto" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Francesco Ruberto</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-prasanna-vidyasekar.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_0651e30cc5c64bc08a45858983b1a6c7~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_0651e30cc5c64bc08a45858983b1a6c7~mv2.jpeg" alt="Prasanna Vidyasekar" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Prasanna Vidyasekar</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-yike-zhu.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_6040a7accff043bb8ceadafb1b1f6ff8~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_6040a7accff043bb8ceadafb1b1f6ff8~mv2.jpeg" alt="Yike Zhu" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Yike Zhu</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-abhinit-kumar-ambastha.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_0611fece1b5f468aa1e5c51006047289~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_0611fece1b5f468aa1e5c51006047289~mv2.jpg" alt="Abhinit Kumar Ambastha" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Abhinit Kumar Ambastha</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-nadja-mikulic.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_28d20fc95a3a4972b86a751d94c8a66a~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_28d20fc95a3a4972b86a751d94c8a66a~mv2.jpg" alt="Nadja Mikulic" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Nadja Mikulic</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-jiayu-feng.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_fc4b3e25b2834f1788a4f29dc99b56db~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_fc4b3e25b2834f1788a4f29dc99b56db~mv2.jpg" alt="Jiayu Feng" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Jiayu Feng</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-ha-thi-thuy-hoa.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_977f5fa637174e63a8928b1906f4ef3d~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_977f5fa637174e63a8928b1906f4ef3d~mv2.jpeg" alt="Ha Thi Thuy Hoa" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Ha Thi Thuy Hoa</div>
+  <div class="team-card-role">Research Fellow</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+</div></div>
+<div class="team-group reveal" data-group="phd">
+<div class="team-group-label">PhD Students</div>
+<div class="team-grid">
+<a href="profile-yan-xinyi.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_ed6e30fa62914a2097427fef57e41361~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_ed6e30fa62914a2097427fef57e41361~mv2.jpg" alt="Yan Xinyi" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Yan Xinyi</div>
+  <div class="team-card-role">PhD Student/Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-yang-hu.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_e60137794c6048169125fba3a23d6359~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_e60137794c6048169125fba3a23d6359~mv2.jpg" alt="Yang Hu" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Yang Hu</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-xu-zhihan.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_87b7ca39966c4a908d27d3b9ecf40b56~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_87b7ca39966c4a908d27d3b9ecf40b56~mv2.jpeg" alt="Xu Zhihan" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Xu Zhihan</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-galvin-tang.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_fbb5fae0e3da4e42925a04ef68a5fc5e~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_fbb5fae0e3da4e42925a04ef68a5fc5e~mv2.jpeg" alt="Galvin Tang" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Galvin Tang</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-brandon-tan.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_d6bc153978b94206b10632d444661121~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_d6bc153978b94206b10632d444661121~mv2.jpeg" alt="Brandon Tan" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Brandon Tan</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-rujie-qi.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_eb958bf1d0304a82a8023c71ee689fd5~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_eb958bf1d0304a82a8023c71ee689fd5~mv2.jpg" alt="Rujie Qi" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Rujie Qi</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-vicky-lai.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_689d6acdd8634bfeb41c5b960b734530~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_689d6acdd8634bfeb41c5b960b734530~mv2.jpg" alt="Vicky Lai" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Vicky Lai</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-chong-khe-ying.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_5cb7deacba9845d79a3b6e44e2a607b2~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_5cb7deacba9845d79a3b6e44e2a607b2~mv2.jpg" alt="Chong Khe Ying" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Chong Khe Ying</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-yei-xi.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_b2ac5a1c45374ba3ab982016c2c69ad8~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_b2ac5a1c45374ba3ab982016c2c69ad8~mv2.jpg" alt="Yei Xi" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Yei Xi</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-wikie-tew.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_29c4344f975f4d6a9544d62996ba26c6~mv2.png/v1/fill/w_600,h_600,al_c,q_80/26b0e3_29c4344f975f4d6a9544d62996ba26c6~mv2.png" alt="Wikie Tew" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Wikie Tew</div>
+  <div class="team-card-role">PhD Student/Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-yuanhe-ma.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_7eea1faaf7c84dfcb4bea7f35f7ce3a8~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_7eea1faaf7c84dfcb4bea7f35f7ce3a8~mv2.jpg" alt="Yuanhe Ma" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Yuanhe Ma</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-ryan-fan.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_6828ee3ea9e04b79ae20b2d35f7d2f11~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_6828ee3ea9e04b79ae20b2d35f7d2f11~mv2.jpg" alt="Ryan Fan" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Ryan Fan</div>
+  <div class="team-card-role">PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-ding-zheng.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_a86b4916fe854086a9e3d69f627d9108~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_a86b4916fe854086a9e3d69f627d9108~mv2.jpg" alt="Ding Zheng" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Ding Zheng</div>
+  <div class="team-card-role">PhD Student/Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-ahpa-sae-yeoh.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_be2192543a634a16b31ae31111b9c889~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_be2192543a634a16b31ae31111b9c889~mv2.jpeg" alt="Ahpa Sae Yeoh" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Ahpa Sae Yeoh</div>
+  <div class="team-card-role">PhD Student /Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-chaoyue-zhang.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_7bbba8dc7a74480b8663819db0009efa~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_7bbba8dc7a74480b8663819db0009efa~mv2.jpg" alt="Chaoyue Zhang" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Chaoyue Zhang</div>
+  <div class="team-card-role">Visiting PhD Student</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+</div></div>
+<div class="team-group reveal" data-group="staff">
+<div class="team-group-label">Research Staff</div>
+<div class="team-grid">
+<a href="profile-veronica.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_d7a55abf702c4969a1f459d5e8993c81~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_d7a55abf702c4969a1f459d5e8993c81~mv2.jpg" alt="Veronica" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Veronica</div>
+  <div class="team-card-role">Lab Manager</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-luu-danh-anh-tuan.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_bafec2d8cee042cead42eca23dcbf63f~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_bafec2d8cee042cead42eca23dcbf63f~mv2.jpg" alt="Luu Danh Anh Tuan" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Luu Danh Anh Tuan</div>
+  <div class="team-card-role">Research Associate</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-ng-shi-ling.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_45efde3099644eb18f43da07b60a9088~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_45efde3099644eb18f43da07b60a9088~mv2.jpeg" alt="Ng Shi Ling" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Ng Shi Ling</div>
+  <div class="team-card-role">Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-lin-zihao.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_f6b569f4783f4d8dae454bc4fde6c724~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_f6b569f4783f4d8dae454bc4fde6c724~mv2.jpeg" alt="Lin Zihao" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Lin Zihao</div>
+  <div class="team-card-role">Research Associate</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-qian-hongliang.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_d750c473a8494528b9d970c37617e48a~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_d750c473a8494528b9d970c37617e48a~mv2.jpg" alt="Qian Hongliang" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Qian Hongliang</div>
+  <div class="team-card-role">Research Associate</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-ng-sze-woei.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_fcd1204c8d704b6fb7c811b26301312b~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_fcd1204c8d704b6fb7c811b26301312b~mv2.jpg" alt="Ng Sze Woei" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Ng Sze Woei</div>
+  <div class="team-card-role">Senior Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-ecclesia-chong-xue-e.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_5b320f0d92d148f79ab5f46862be0304~mv2.png/v1/fill/w_600,h_600,al_c,q_80/26b0e3_5b320f0d92d148f79ab5f46862be0304~mv2.png" alt="Ecclesia Chong Xue E" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Ecclesia Chong Xue E</div>
+  <div class="team-card-role">Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-matthew-ong-sze-yi.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_5372c2fe39084a52bc7c421d104cb681~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_5372c2fe39084a52bc7c421d104cb681~mv2.jpg" alt="Matthew Ong Sze Yi" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Matthew Ong Sze Yi</div>
+  <div class="team-card-role">Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-yeo-rong-quan-benjamin.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_ea478852f9d94a12a86a49410af2c436~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_ea478852f9d94a12a86a49410af2c436~mv2.jpg" alt="Yeo Rong Quan Benjamin" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Yeo Rong Quan Benjamin</div>
+  <div class="team-card-role">Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-anna-kawaguchi.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_5c5c96ce49ba4d4796428cd053e1f9df~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_5c5c96ce49ba4d4796428cd053e1f9df~mv2.jpg" alt="Anna Kawaguchi" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Anna Kawaguchi</div>
+  <div class="team-card-role">Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-hasna-ufaira-muthi.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_7b5be5bb57984a91b0f4a3c560051456~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_7b5be5bb57984a91b0f4a3c560051456~mv2.jpg" alt="Hasna Ufaira Muthi" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Hasna Ufaira Muthi</div>
+  <div class="team-card-role">Laboratory Technician</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-reeve-teo-kay-xiang.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_b0b716b8703f4d8b92c60db699c4d1a8~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_b0b716b8703f4d8b92c60db699c4d1a8~mv2.jpeg" alt="Reeve Teo Kay Xiang" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Reeve Teo Kay Xiang</div>
+  <div class="team-card-role">Laboratory Technician</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-olivera-kyle-ellen-monique-jambalos.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_55cae2bdf48d4894bac189595a67409f~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_55cae2bdf48d4894bac189595a67409f~mv2.jpg" alt="Olivera Kyle Ellen Monique Jambalos" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Olivera Kyle Ellen Monique Jambalos</div>
+  <div class="team-card-role">Laboratory Technician</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-yap-aixin.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_25a4d6a9d6334db99c43986bc68ff601~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_25a4d6a9d6334db99c43986bc68ff601~mv2.jpeg" alt="Yap Aixin" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Yap Aixin</div>
+  <div class="team-card-role">Research Assistant</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+</div></div>
+<div class="team-group reveal" data-group="reset">
+<div class="team-group-label">Project RESET & Clinical Research Coordinators</div>
+<div class="team-grid">
+<a href="profile-beverly-wong.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_7b52315cc53d4e3da3f3cf0ad6e9cb85~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_7b52315cc53d4e3da3f3cf0ad6e9cb85~mv2.jpeg" alt="Beverly Wong" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Beverly Wong</div>
+  <div class="team-card-role">RESET Project Manager</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-shaun-loong.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_e525dc389c9b4a4fbc921e6d4919023f~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_e525dc389c9b4a4fbc921e6d4919023f~mv2.jpeg" alt="Shaun Loong" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Shaun Loong</div>
+  <div class="team-card-role">Internal Medicine Resident</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-amisha-sharma.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_f57d8c6cafea451cb54444d2ab213c4f~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_f57d8c6cafea451cb54444d2ab213c4f~mv2.jpg" alt="Amisha Sharma" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Amisha Sharma</div>
+  <div class="team-card-role">Clinical Research Coordinator</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-suhaani-nigam.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_a7ef44845b294fa198e49410eb171403~mv2.png/v1/fill/w_600,h_600,al_c,q_80/26b0e3_a7ef44845b294fa198e49410eb171403~mv2.png" alt="Suhaani Nigam" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Suhaani Nigam</div>
+  <div class="team-card-role">Clinical Research Coordinator</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-phylicia-aw.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_d6907593c0ee41bf8311e94ba13403b4~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_d6907593c0ee41bf8311e94ba13403b4~mv2.jpg" alt="Phylicia Aw" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Phylicia Aw</div>
+  <div class="team-card-role">Clinical Research Coordinator</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-aynul-marliya.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_7240ddaefa194059b3d339fcdac6b0cd~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_7240ddaefa194059b3d339fcdac6b0cd~mv2.jpg" alt="Aynul Marliya" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Aynul Marliya</div>
+  <div class="team-card-role">Clinical Research Coordinator</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-zachariah-seet-zhong-en.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_93a382f5a7d444a793f824ca39103afe~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_93a382f5a7d444a793f824ca39103afe~mv2.jpeg" alt="Zachariah Seet Zhong En" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Zachariah Seet Zhong En</div>
+  <div class="team-card-role">Clinical Research Coordinator</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-tharisini-soorianarayanan.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_2cae757d19e844fd86d061cf5646670a~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_2cae757d19e844fd86d061cf5646670a~mv2.jpg" alt="Tharisini Soorianarayanan" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Tharisini Soorianarayanan</div>
+  <div class="team-card-role">Clinical Research Coordinator</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-benjamin-loh.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_321bb4dfb3d14fd8b957581e81087646~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_321bb4dfb3d14fd8b957581e81087646~mv2.jpg" alt="Benjamin Loh" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Benjamin Loh</div>
+  <div class="team-card-role">Clinical Research Coordinator</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+<a href="profile-amirul-sufyan.html" class="team-card">
+  <div class="team-card-img-wrap"><img src="https://static.wixstatic.com/media/26b0e3_94c33399fb824fb89943b78710bae931~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_94c33399fb824fb89943b78710bae931~mv2.jpg" alt="Amirul Sufyan" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&q=80'"/></div>
+  <div class="team-card-name">Amirul Sufyan</div>
+  <div class="team-card-role">Clinical Research Coordinator</div>
+  <span class="team-card-arrow">View Profile →</span>
+</a>
+</div></div>
 </div></section>
-
 <footer><div class="container">
   <div class="footer-grid">
     <div><div class="nav-logo"><div class="nav-logo-mark">F</div><div><div class="nav-logo-text" style="color:white">Foo Lab</div><div class="nav-logo-sub">NUS Medicine</div></div></div><p class="footer-brand-desc">Cardiac genomics, transcriptomics, epigenomics and precision medicine at the National University of Singapore and A*STAR Genome Institute of Singapore.</p></div>
-    <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="roger-foo.html">Roger Foo</a></li><li><a href="research.html">Research</a></li><li><a href="team.html">Our Team</a></li><li><a href="project-reset.html">Project RESET</a></li></ul></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="roger-foo.html">Roger Foo</a></li><li><a href="research.html">Research</a></li><li><a href="team.html">Our Team</a></li><li><a href="project-reset.html">Project RESET</a></li><li><a href="news.html">News</a></li></ul></div>
     <div><div class="footer-col-title">Research</div><ul class="footer-links"><li><a href="research.html">Transcriptomics</a></li><li><a href="research.html">Epigenomics</a></li><li><a href="research.html">Stem Cells</a></li><li><a href="project-reset.html">Project RESET</a></li><li><a href="https://github.com/Foo-Lab" target="_blank">GitHub</a></li></ul></div>
-    <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="https://www.foo-lab.sg">foo-lab.sg</a></li><li><a href="https://www.project-reset.sg" target="_blank">project-reset.sg</a></li><li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications</a></li><li><a href="https://github.com/Foo-Lab" target="_blank">GitHub Repository</a></li></ul></div>
+    <div><div class="footer-col-title">Links</div><ul class="footer-links"><li><a href="https://www.project-reset.sg" target="_blank">project-reset.sg</a></li><li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications</a></li><li><a href="https://github.com/Foo-Lab" target="_blank">GitHub Repository</a></li></ul></div>
   </div>
   <div class="footer-bottom"><div class="footer-copy">© 2026 Foo Lab, National University of Singapore. All rights reserved.</div><div class="footer-social"><a href="https://github.com/Foo-Lab" target="_blank">GH</a><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Pub</a><a href="https://www.project-reset.sg" target="_blank">RST</a></div></div>
-</div></footer>
-<script>
-  document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.team-group').forEach(g=>{g.style.display=(f==='all'||g.dataset.group.includes(f))?'':'none';});});});
+</div></footer><script>
+  document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.team-group').forEach(g=>{g.style.display=(f==='all'||g.dataset.group===f)?'':'none';});});});
   document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+  document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
   const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-</script>
-</body></html>
+</script></body></html>

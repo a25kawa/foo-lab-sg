@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Ryan Fan — Foo Lab | NUS Medicine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+  .profile-wrap{padding:5rem 0 6rem;background:var(--white)}
+  .profile-grid{display:grid;grid-template-columns:340px 1fr;gap:4rem;align-items:start}
+  .profile-img-wrap{position:relative}
+  .profile-img{width:100%;border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,.15);aspect-ratio:1/1;object-fit:cover;object-position:top}
+  .profile-accent{position:absolute;top:-12px;right:-12px;width:100%;height:100%;border:2px solid var(--coral);border-radius:12px;z-index:-1}
+  .profile-name{font-family:var(--font-serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--white);line-height:1.15}
+  .profile-role-badge{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fb923c;margin-top:.5rem;font-family:var(--font-sans)}
+  .profile-bio p{font-size:.97rem;color:var(--slate-600);line-height:1.85;margin-bottom:1.25rem}
+  .profile-bio p:last-child{margin-bottom:0}
+  .profile-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;color:var(--slate-400);margin-bottom:2rem;transition:color var(--transition)}
+  .profile-back:hover{color:var(--coral)}
+  .profile-back::before{content:'←'}
+  @media(max-width:800px){.profile-grid{grid-template-columns:1fr}.profile-img{max-width:280px}}
+</style>
+</head>
+<body><nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark">F</div><div><div class="nav-logo-text">Foo Lab</div><div class="nav-logo-sub">NUS Medicine · CVRI · A*STAR GIS</div></div></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="roger-foo.html">Roger Foo</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="project-reset.html">Project RESET</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank" class="nav-cta">Publications</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu"><ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="roger-foo.html">Roger Foo</a></li>
+  <li><a href="research.html">Research</a></li>
+  <li><a href="project-reset.html">Project RESET</a></li>
+  <li><a href="team.html">Our Team</a></li>
+  <li><a href="news.html">News</a></li>
+  <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications →</a></li>
+</ul></div>
+<section class="page-hero" style="padding:5rem 0 3rem">
+  <div class="page-hero-grad" style="background:rgba(15,23,42,0.95)"></div>
+  <div class="container page-hero-content">
+    <a href="team.html" class="profile-back" style="color:var(--slate-400);display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;margin-bottom:1.5rem">← Back to Team</a>
+    <div class="profile-name">Ryan Fan</div>
+    <div class="profile-role-badge">PhD Student</div>
+  </div>
+</section>
+<section class="profile-wrap">
+  <div class="container">
+    <div class="profile-grid reveal">
+      <div class="profile-img-wrap">
+        <img class="profile-img" src="https://static.wixstatic.com/media/26b0e3_6828ee3ea9e04b79ae20b2d35f7d2f11~mv2.jpg/v1/fill/w_600,h_600,al_c,q_80/26b0e3_6828ee3ea9e04b79ae20b2d35f7d2f11~mv2.jpg" alt="Ryan Fan" onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80'"/>
+        <div class="profile-accent"></div>
+      </div>
+      <div>
+        <span class="section-label">PhD Student</span>
+        <h1 class="section-title">Ryan Fan</h1>
+        <div class="profile-bio" style="margin-top:1.5rem">
+          <p>As someone endlessly fascinated by molecular biology, I am currently a doctoral candidate studying epigenetic regulation of cardiac lineage commitment and cardiomyocyte maturation. My work revolves around the differentiation and characterisation of stem-cell derived cardiomyocytes, as well as bioinformatic analyses to identify novel regulators of cardiomyocyte biological processes.</p>
+<p>My research areas of interest include differential RNA isoform usage in cardiomyocyte maturation, and identifying modulators of cell state transitions with single-cell transcriptomics.</p>
+        </div>
+        
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="team.html" class="btn btn-slate">← Back to Team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer><div class="container">
+  <div class="footer-grid">
+    <div><div class="nav-logo"><div class="nav-logo-mark">F</div><div><div class="nav-logo-text" style="color:white">Foo Lab</div><div class="nav-logo-sub">NUS Medicine</div></div></div><p class="footer-brand-desc">Cardiac genomics, transcriptomics, epigenomics and precision medicine at the National University of Singapore and A*STAR Genome Institute of Singapore.</p></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="roger-foo.html">Roger Foo</a></li><li><a href="research.html">Research</a></li><li><a href="team.html">Our Team</a></li><li><a href="project-reset.html">Project RESET</a></li><li><a href="news.html">News</a></li></ul></div>
+    <div><div class="footer-col-title">Research</div><ul class="footer-links"><li><a href="research.html">Transcriptomics</a></li><li><a href="research.html">Epigenomics</a></li><li><a href="research.html">Stem Cells</a></li><li><a href="project-reset.html">Project RESET</a></li><li><a href="https://github.com/Foo-Lab" target="_blank">GitHub</a></li></ul></div>
+    <div><div class="footer-col-title">Links</div><ul class="footer-links"><li><a href="https://www.project-reset.sg" target="_blank">project-reset.sg</a></li><li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications</a></li><li><a href="https://github.com/Foo-Lab" target="_blank">GitHub Repository</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Foo Lab, National University of Singapore. All rights reserved.</div><div class="footer-social"><a href="https://github.com/Foo-Lab" target="_blank">GH</a><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Pub</a><a href="https://www.project-reset.sg" target="_blank">RST</a></div></div>
+</div></footer><script>
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+  document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script></body></html>

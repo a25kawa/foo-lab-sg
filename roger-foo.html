@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Prof Roger Foo — Foo Lab | NUS Medicine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .rf-hero{background:var(--slate-900);padding:7rem 0 0;position:relative;overflow:hidden}
+    .rf-hero::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,transparent,var(--coral) 40%,transparent)}
+    .rf-hero-grid{display:grid;grid-template-columns:420px 1fr;gap:0;align-items:end;position:relative;z-index:1}
+    .rf-hero-img{width:100%;display:block;margin-top:2rem}
+    .rf-hero-text{padding:0 3rem 4rem 2rem}
+    .rf-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);border-radius:999px;padding:.35rem .9rem;font-size:.75rem;font-weight:600;color:#fb923c;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem}
+    .rf-name{font-family:var(--font-serif);font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:.5rem}
+    .rf-title{font-family:var(--font-serif);font-size:1.05rem;font-style:italic;color:var(--coral);margin-bottom:2rem}
+    .rf-roles{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
+    .rf-roles li{font-size:.9rem;color:var(--slate-300);display:flex;align-items:baseline;gap:.6rem}
+    .rf-roles li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--coral);flex-shrink:0;margin-top:.35rem}
+    .rf-social{display:flex;gap:.75rem;margin-top:1.5rem}
+    .rf-social a{width:40px;height:40px;border-radius:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--slate-300);transition:all var(--transition)}
+    .rf-social a:hover{background:var(--coral);border-color:var(--coral);color:white}
+
+    .rf-bio{padding:5rem 0;background:var(--white)}
+    .rf-bio-grid{display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:start}
+    .rf-bio-text p{font-size:.97rem;color:var(--slate-600);line-height:1.85;margin-bottom:1.5rem}
+    .rf-bio-text p:first-of-type{font-size:1.05rem;color:var(--slate-700)}
+
+    .rf-sidebar-card{background:var(--slate-50);border:1px solid var(--slate-200);border-radius:10px;padding:1.75rem;margin-bottom:1.5rem}
+    .rf-sidebar-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--slate-400);margin-bottom:1rem}
+    .rf-sidebar-item{font-size:.85rem;color:var(--slate-600);line-height:1.6;padding:.5rem 0;border-bottom:1px solid var(--slate-200)}
+    .rf-sidebar-item:last-child{border-bottom:none;padding-bottom:0}
+    .rf-sidebar-item strong{color:var(--slate-800);font-weight:600}
+
+    .rf-pubs{padding:4rem 0;background:var(--slate-50);border-top:1px solid var(--slate-200)}
+
+    @media(max-width:900px){
+      .rf-hero-grid{grid-template-columns:1fr}
+      .rf-hero-img{max-width:320px;margin:0 auto}
+      .rf-hero-text{padding:2rem 1.5rem 3rem}
+      .rf-bio-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-mark">F</div><div><div class="nav-logo-text">Foo Lab</div><div class="nav-logo-sub">NUS Medicine · CVRI · A*STAR GIS</div></div></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="active"><a href="roger-foo.html">Roger Foo</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="project-reset.html">Project RESET</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank" class="nav-cta">Publications</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu"><ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="roger-foo.html">Roger Foo</a></li>
+  <li><a href="research.html">Research</a></li>
+  <li><a href="project-reset.html">Project RESET</a></li>
+  <li><a href="team.html">Our Team</a></li>
+  <li><a href="news.html">News</a></li>
+  <li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications →</a></li>
+</ul></div>
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section class="rf-hero">
+  <div class="container">
+    <div class="rf-hero-grid">
+      <div>
+        <img class="rf-hero-img"
+          src="https://static.wixstatic.com/media/26b0e3_2031e4476ea24401979a712e958085d0~mv2.jpg/v1/fill/w_840,h_1000,al_c,q_85/26b0e3_2031e4476ea24401979a712e958085d0~mv2.jpg"
+          alt="Prof Roger Foo"
+          onerror="this.src='https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80'"/>
+      </div>
+      <div class="rf-hero-text">
+        <div class="rf-eyebrow">Principal Investigator</div>
+        <div class="rf-name">Prof Roger Foo</div>
+        <div class="rf-title">Zayed Bin Sultan Al Nahyan Professor in Medicine</div>
+        <ul class="rf-roles">
+          <li>Vice-Dean (Research), NUS Yong Loo Lin School of Medicine</li>
+          <li>Director, Cardiovascular Research Institute (CVRI) NUS</li>
+          <li>Senior Consultant (Genetics Lead), National University Heart Centre</li>
+          <li>Adjunct Research Director, Institute of Molecular and Cell Biology (IMCB) A*STAR</li>
+          <li>Group Director Research, National University Health System (NUHS)</li>
+        </ul>
+        <div class="rf-social">
+          <a href="https://x.com" target="_blank" title="X / Twitter">𝕏</a>
+          <a href="https://linkedin.com" target="_blank" title="LinkedIn">in</a>
+          <a href="https://youtube.com" target="_blank" title="YouTube">▶</a>
+          <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank" title="Publications">Pub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BIO ═════════════════════════════════════════════════ -->
+<section class="rf-bio">
+  <div class="container">
+    <div class="rf-bio-grid">
+      <div class="rf-bio-text reveal">
+        <span class="section-label">Biography</span>
+        <h2 class="section-title">Academic Journey</h2>
+
+        <p>Roger trained with the late Professor David de Bono (British Heart Foundation Chair of Cardiology, Leicester) before moving to Cambridge, where he worked under Professor Morris Brown MD, FRCP, FMedSci, FRS at the Clinical Pharmacology Unit.</p>
+
+        <p>Awarded a Wellcome Trust Fellowship, Roger joined Professor Rick Kitsis at Albert Einstein College of Medicine, New York City, exploring the molecular regulation of heart failure and cardiomyocyte apoptosis. He returned to Cambridge in 2006 to start Foo Lab 1.0 at the Division of Cardiovascular Medicine, funded by the British Heart Foundation and Wellcome Trust.</p>
+
+        <p>Foo Lab 2.0 was established in Singapore in 2013 at the NUS Cardiovascular Research Institute and the Genome Institute of Singapore, A*STAR. The lab has since grown to over 50 members spanning basic science, clinical research, and population health.</p>
+
+        <p>Roger founded the NUHS Clinician Scientist Academy and serves as chair of the MOH Clinician Scientist Residency Research Panel. He is President of the College of Clinician Scientists, Academy of Medicine Singapore, and holds multiple leadership roles across NUS Medicine and NUHS.</p>
+
+        <p>His research spans cardiac genomics, transcriptomics, epigenomics, stem cell biology, and population-level cardiovascular prevention — unified by a mission to make impactful scientific discoveries and train the next generation of clinician-scientists in Singapore and Southeast Asia.</p>
+
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="btn btn-coral" target="_blank">View Publications</a>
+          <a href="team.html" class="btn btn-slate">Meet the Team →</a>
+        </div>
+      </div>
+
+      <div class="reveal" style="transition-delay:.15s">
+        <div class="rf-sidebar-card">
+          <div class="rf-sidebar-title">Research Interests</div>
+          <div class="rf-sidebar-item"><strong>Cardiac Genomics</strong><br>GWAS, population variation, Southeast Asia</div>
+          <div class="rf-sidebar-item"><strong>Transcriptomics</strong><br>scRNA-seq, spatial transcriptomics, ncRNAs</div>
+          <div class="rf-sidebar-item"><strong>Epigenomics</strong><br>Enhancer maps, 3D chromatin, ATAC-seq</div>
+          <div class="rf-sidebar-item"><strong>Stem Cell Biology</strong><br>hESC/iPSC differentiation, disease modelling</div>
+          <div class="rf-sidebar-item"><strong>Population Health</strong><br>Project RESET, cardiometabolic prevention</div>
+        </div>
+
+        <div class="rf-sidebar-card">
+          <div class="rf-sidebar-title">Affiliations</div>
+          <div class="rf-sidebar-item">NUS Yong Loo Lin School of Medicine</div>
+          <div class="rf-sidebar-item">NUS Cardiovascular Research Institute (CVRI)</div>
+          <div class="rf-sidebar-item">Genome Institute of Singapore, A*STAR</div>
+          <div class="rf-sidebar-item">National University Heart Centre</div>
+          <div class="rf-sidebar-item">IMCB, A*STAR</div>
+        </div>
+
+        <div class="rf-sidebar-card">
+          <div class="rf-sidebar-title">Training</div>
+          <div class="rf-sidebar-item">University of Leicester (de Bono)</div>
+          <div class="rf-sidebar-item">University of Cambridge (Brown)</div>
+          <div class="rf-sidebar-item">Albert Einstein College of Medicine (Kitsis)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PUBLICATIONS CTA ════════════════════════════════════ -->
+<section class="rf-pubs">
+  <div class="container reveal" style="text-align:center">
+    <span class="section-label">Publications</span>
+    <h2 class="section-title" style="margin-bottom:1rem">Peer-Reviewed Research</h2>
+    <p style="font-size:.95rem;color:var(--slate-500);max-width:520px;margin:0 auto 2rem">Browse the full publication record via NUS Discovery or access our open-source code on GitHub.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" class="btn btn-coral" target="_blank">NUS Discovery Publications</a>
+      <a href="https://github.com/Foo-Lab" class="btn btn-slate" target="_blank">GitHub Repository →</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">
+  <div class="footer-grid">
+    <div><div class="nav-logo"><div class="nav-logo-mark">F</div><div><div class="nav-logo-text" style="color:white">Foo Lab</div><div class="nav-logo-sub">NUS Medicine</div></div></div><p class="footer-brand-desc">Cardiac genomics, transcriptomics, epigenomics and precision medicine at the National University of Singapore and A*STAR Genome Institute of Singapore.</p></div>
+    <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="roger-foo.html">Roger Foo</a></li><li><a href="research.html">Research</a></li><li><a href="team.html">Our Team</a></li><li><a href="project-reset.html">Project RESET</a></li><li><a href="news.html">News</a></li></ul></div>
+    <div><div class="footer-col-title">Research</div><ul class="footer-links"><li><a href="research.html">Transcriptomics</a></li><li><a href="research.html">Epigenomics</a></li><li><a href="research.html">Stem Cells</a></li><li><a href="project-reset.html">Project RESET</a></li><li><a href="https://github.com/Foo-Lab" target="_blank">GitHub</a></li></ul></div>
+    <div><div class="footer-col-title">Links</div><ul class="footer-links"><li><a href="https://www.project-reset.sg" target="_blank">project-reset.sg</a></li><li><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Publications</a></li><li><a href="https://github.com/Foo-Lab" target="_blank">GitHub Repository</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-copy">© 2026 Foo Lab, National University of Singapore. All rights reserved.</div><div class="footer-social"><a href="https://github.com/Foo-Lab" target="_blank">GH</a><a href="https://discovery.nus.edu.sg/3106-sik-yin-roger-foo/publications" target="_blank">Pub</a><a href="https://www.project-reset.sg" target="_blank">RST</a></div></div>
+</div></footer>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+  document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('mobileMenu').classList.remove('open')));
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body></html>
